@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" 
+        content="width=device-width, 
+        initial-scale=1.0, 
+        user-scalable=no" />
+  <title>DataLogger</title>
+</head>
+
+<body>
+
+  <div id="helpModal" class="modal">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Instructions:</h5>
+      </div>
+
+      <div class="modal-body">
+        <p>&emsp;&emsp;Press Left Click on the Triangle<p>
+        <p>&emsp;&emsp;Press Right Click on the Reversed Triangle<p>
+        <p>&emsp;&emsp;Press Double Click on the Square<p>
+        <p>&emsp;&emsp;Drop the Circle to the Goal Position<p>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Please enter measurement period (in minutes):</span>
+        </div>
+        <input id="measurementPeriod" type="number" min="1" max="60" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="3">
+      </div>
+
+      <div id="measurementPeriodAlert" class="alert alert-danger" role="alert">
+        Measurement period must be an integer between 1 and 60! 
+      </div>
+
+      <div class="modal-footer">
+        <button id="startMeasurementBtn" type="button" class="btn btn-primary">Start Measurement</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="navBtns">
+    <span id="countDownTimer" class="badge badge-danger">0m 0s left</span>
+    <span id="instructionSpan" class="alert alert-danger">This is a primary alert—check it out!</span>
+    <button id="resetBtn" type="button" class="btn btn-dark">Reset</button>
+    <button id="download_csv" type="button" class="btn btn-success">Download CSV</button> 
+  </div>
+
+  <div id="outerContainer">
+    <div id="container">
+      <div id="mycircle">
+
+      </div>
+      <div id="goal">
+        <p id="goalTitle"><b>Goal</b></p>
+      </div>  
+      <div id="square">
+
+      </div>
+      <div id="triangle">
+        <div id="triangle2">
+
+        </div>
+      </div>
+      <div id="r_triangle">
+        <div id="r_triangle2">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+
+</body>
+
+</html>
