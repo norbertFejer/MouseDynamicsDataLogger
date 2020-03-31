@@ -165,11 +165,11 @@ function download_csv() {
       csv += "\n";
   });
 
-  console.log(csv);
   var hiddenElement = document.createElement('a');
   hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
   hiddenElement.target = '_blank';
-  hiddenElement.download = 'session_' + counterValue + 'min' + '.csv';
+  var current_date = new Date().toJSON().slice(0, 10).replace(/-/g, '_');
+  hiddenElement.download = 'session_' + current_date + '_' + counterValue + 'min' + '.csv';
   hiddenElement.click();
 }
 
