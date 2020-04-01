@@ -28,8 +28,16 @@ var reverseTriangleInitialY;
 
 var counterValue = 0;
 
-var mouseData = []
-var initialTimestamp = new Date().valueOf()
+var mouseData = [];
+var initialTimestamp = new Date().valueOf();
+
+var counterValue = 0;
+
+// Get the modal
+var modal = document.getElementById("helpModal");
+
+var startMeasurementBtn = document.getElementById("startMeasurementBtn");
+var resetMeasurementBtn = document.getElementById("resetBtn");
 
 container.addEventListener("mousedown", dragStart, false);
 container.addEventListener("mouseup", dragEnd, false);
@@ -160,7 +168,7 @@ function setGoalRandomCoordinates() {
 function download_csv() {
 
   var csv = "client timestamp,button,state,x,y\n";
-  mouseData.forEach(function(row) {
+  mouseData.forEach( function(row) {
       csv += row.join(',');
       csv += "\n";
   });
@@ -171,6 +179,8 @@ function download_csv() {
   var current_date = new Date().toJSON().slice(0, 10).replace(/-/g, '_');
   hiddenElement.download = 'session_' + current_date + '_' + counterValue + 'min' + '.csv';
   hiddenElement.click();
+
+  mouseData = [];
 }
 
 function mouseMove(e) {
@@ -348,8 +358,6 @@ function resetGoalSize() {
   }
 }
 
-var counterValue = 0;
-
 function startCounter(){
 
   var countDownDate = new Date()
@@ -374,17 +382,13 @@ function startCounter(){
       clearInterval(countDownTimer);
       document.getElementById("countDownTimer").innerHTML = "Session finished";
       download_csv();
+
+      hideAllElement();
+      document.getElementById("instructionSpan").innerHTML = "Press the Reset button to start a new measurement!"
     }
   }, 1000);
 }
 
-// Get the modal
-var modal = document.getElementById("helpModal");
-
-// Get the <span> element that closes the modal
-var startMeasurementBtn = document.getElementById("startMeasurementBtn");
-
-// When the user clicks on <span> (x), close the modal
 startMeasurementBtn.onclick = function() {
 
   counterValue = document.getElementById("measurementPeriod").value;
@@ -398,8 +402,6 @@ startMeasurementBtn.onclick = function() {
     getNewProblem();
   }
 }
-
-var resetMeasurementBtn = document.getElementById("resetBtn");
 
 resetMeasurementBtn.onclick = function() {
 
